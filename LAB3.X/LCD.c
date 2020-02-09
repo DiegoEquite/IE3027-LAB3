@@ -1,3 +1,6 @@
+//* Liberia basada en la libreira LCD4bits de Pablo Mazariegos
+
+
 #include <xc.h>
 #include <stdint.h>
 #include "LCD.h"
@@ -77,11 +80,9 @@ void print_LCD_String(char *a){
 	for(i=0;a[i]!='\0';i++)
 	   print_LCD_Char(a[i]);
 }
-void Lcd_Shift_Right()
-{
+void Lcd_Shift_Right(){
 	comandosLCD(28);
 }
-void Lcd_Shift_Left()
-{
+void Lcd_Shift_Left(){
 	comandosLCD(24);
 }

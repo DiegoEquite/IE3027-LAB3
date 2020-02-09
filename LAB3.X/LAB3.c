@@ -34,12 +34,14 @@
 #include <xc.h>
 #include <stdint.h>
 #include "LCD.h"
+#include "ADC.h"
 
 
 void configIO(void);
 
 void main(void) {
     configIO();
+    configADC();
     LCD_Init();
     LCD_clear();
     while(1){
@@ -58,6 +60,4 @@ void configIO(){
     PORTA=0;
     PORTB=0;
     PORTE=0;
-    
-
 }
