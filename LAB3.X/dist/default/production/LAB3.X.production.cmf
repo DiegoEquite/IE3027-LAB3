@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\rodri\AppData\Local\Temp\sbb0.o
+$C:\Users\rodri\AppData\Local\Temp\s43g.o
 end_init CODE 0 0 0 3 2
 config CONFIG 0 2007 2007 2 2
 $dist/default/production\LAB3.X.production.o
@@ -74,11 +74,11 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\LAB3.X.production.o
-7FC cinit CODE >833:C:\Users\rodri\AppData\Local\Temp\sbb0.s
-7FC cinit CODE >836:C:\Users\rodri\AppData\Local\Temp\sbb0.s
-7FC cinit CODE >842:C:\Users\rodri\AppData\Local\Temp\sbb0.s
-7FC cinit CODE >844:C:\Users\rodri\AppData\Local\Temp\sbb0.s
-7FD cinit CODE >845:C:\Users\rodri\AppData\Local\Temp\sbb0.s
+7FC cinit CODE >833:C:\Users\rodri\AppData\Local\Temp\s43g.s
+7FC cinit CODE >836:C:\Users\rodri\AppData\Local\Temp\s43g.s
+7FC cinit CODE >842:C:\Users\rodri\AppData\Local\Temp\s43g.s
+7FC cinit CODE >844:C:\Users\rodri\AppData\Local\Temp\s43g.s
+7FD cinit CODE >845:C:\Users\rodri\AppData\Local\Temp\s43g.s
 773 text9 CODE >24:C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LCD.c
 774 text9 CODE >25:C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LCD.c
 77F text9 CODE >26:C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LCD.c
@@ -181,11 +181,11 @@ __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 print_LCD_Char@temp 72 0 COMMON 1 cstackCOMMON dist/default/production\LAB3.X.production.o
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\rodri\AppData\Local\Temp\sbb0.o
+___sp 0 0 STACK 2 stack C:\Users\rodri\AppData\Local\Temp\s43g.o
 _main E22 0 CODE 0 maintext dist/default/production\LAB3.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __end_of_print_LCD_String E22 0 CODE 0 text1 dist/default/production\LAB3.X.production.o
-start 0 0 CODE 0 init C:\Users\rodri\AppData\Local\Temp\sbb0.o
+start 0 0 CODE 0 init C:\Users\rodri\AppData\Local\Temp\s43g.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __end_of_PUERTO F62 0 CODE 0 text9 dist/default/production\LAB3.X.production.o
@@ -194,12 +194,12 @@ _LCD_Init F62 0 CODE 0 text8 dist/default/production\LAB3.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 __size_of_LCD_Set_Cursor 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __end_of_LCD_Init FF8 0 CODE 0 text8 dist/default/production\LAB3.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\sbb0.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\rodri\AppData\Local\Temp\s43g.o
 wtemp0 7E 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 print_LCD_Char@caracter 74 0 COMMON 1 cstackCOMMON dist/default/production\LAB3.X.production.o
@@ -211,8 +211,8 @@ _ADRESH 1E 0 ABS 0 - dist/default/production\LAB3.X.production.o
 _ANSELH 189 0 ABS 0 - dist/default/production\LAB3.X.production.o
 _configADC D30 0 CODE 0 text4 dist/default/production\LAB3.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\rodri\AppData\Local\Temp\sbb0.o
-___stacklo 0 0 ABS 0 - C:\Users\rodri\AppData\Local\Temp\sbb0.o
+___stackhi 0 0 ABS 0 - C:\Users\rodri\AppData\Local\Temp\s43g.o
+___stacklo 0 0 ABS 0 - C:\Users\rodri\AppData\Local\Temp\s43g.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
 start_initialization FF8 0 CODE 0 cinit dist/default/production\LAB3.X.production.o
@@ -222,7 +222,7 @@ _PUERTO EE6 0 CODE 0 text9 dist/default/production\LAB3.X.production.o
 _TRISEbits 89 0 ABS 0 - dist/default/production\LAB3.X.production.o
 __end_of_comandosLCD D90 0 CODE 0 text7 dist/default/production\LAB3.X.production.o
 __size_of_print_LCD_Char 0 0 ABS 0 - dist/default/production\LAB3.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\rodri\AppData\Local\Temp\sbb0.o
+___int_sp 0 0 STACK 2 stack C:\Users\rodri\AppData\Local\Temp\s43g.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -283,7 +283,7 @@ __CFG_FOSC$INTRC_NOCLKOUT 0 0 ABS 0 - dist/default/production\LAB3.X.production.
 PUERTO@x 70 0 COMMON 1 cstackCOMMON dist/default/production\LAB3.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
 __stringtab 6 0 STRING 0 strings dist/default/production\LAB3.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\rodri\AppData\Local\Temp\sbb0.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\rodri\AppData\Local\Temp\s43g.o
 _LCD_Set_Cursor D90 0 CODE 0 text6 dist/default/production\LAB3.X.production.o
 __pmaintext E22 0 CODE 0 maintext dist/default/production\LAB3.X.production.o
 __Lcommon 0 0 ABS 0 common -
