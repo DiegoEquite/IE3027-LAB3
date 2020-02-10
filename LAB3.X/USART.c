@@ -4,8 +4,9 @@
 #include <xc.h>
 #include <stdint.h>
 #include "USART.h"
+#define _XTAL_FREQ 4000000
 
-char UART_Init(const long int baudrate){
+char USART_Init(const long int baudrate){
   unsigned int x;
   x = (_XTAL_FREQ - baudrate*64)/(baudrate*64);   //SPBRG for Low Baud Rate
   if(x>255)                                       //If High Baud Rage Required
@@ -19,7 +20,7 @@ char UART_Init(const long int baudrate){
     SYNC = 0;                                     //Setting Asynchronous Mode, ie UART
     SPEN = 1;                                     //Enables Serial Port
     TRISC7 = 1;                                   //As Prescribed in Datasheet
-    TRISC6 = 1;                                   //As Prescribed in Datasheet
+    TRISC6 = 0;                                   //As Prescribed in Datasheet
     CREN = 1;                                     //Enables Continuous Reception
     TXEN = 1;                                     //Enables Transmission
     return 1;                                     //Returns 1 to indicate Successful Completion
@@ -27,20 +28,18 @@ char UART_Init(const long int baudrate){
   return 0;                                       //Returns 0 to indicate UART initialization failed
 }
 void Write_USART(uint8_t x){
-    while(!TMRT){
-        TXREG=x;
-    }
+    while(!TRMT);
+    TXREG=x;
 }
-void Write_USART_String(uint8_t a){
-    uinit8_t i;
-    for(i=0;a[i]=!"/0";i++){
+void Write_USART_String(char *a){
+    uint8_t i;
+    for(i=0;a[i]!='\0';i++){
         Write_USART(a[i]);
     }
 }
 uint8_t Read_USART(){
-  while(!RCIF){
-      return RCREG;
-  }  
+  while(!RCIF);
+  return RCREG;
 } 
 void Read_USART_String(char *Output, unsigned int length){
   unsigned int i;

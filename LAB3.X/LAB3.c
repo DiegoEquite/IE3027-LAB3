@@ -33,31 +33,46 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include "LCD.h"
 #include "ADC.h"
-
+#include "USART.h"
 
 void configIO(void);
-
+uint8_t lecturaUSART;
+uint8_t contador=0;
+char valor [8];
 void main(void) {
     configIO();
     configADC();
+    USART_Init(9600);
     LCD_Init();
     LCD_clear();
     while(1){
-        LCD_clear();
-        LCD_Set_Cursor(1,1);
-        print_LCD_String("hola");
+        if(RCIF==1){lecturaUSART=Read_USART();}
+        if(lecturaUSART==43){contador++;}
+        else if(lecturaUSART==45){contador--;}
+        sprintf(valor,"%d", contador); 
+        Write_USART_String("V1      V2      contador ");
+        Write_USART(13);
+        Write_USART(10);
+        Write_USART(valor);
+        Write_USART(13);
+        Write_USART(10);
+        __delay_ms(1000);
     }
     return;
 }
 void configIO(){
     TRISB=0;
     TRISE=0;
+    TRISD=0;
     TRISA=0;
     ANSEL=0;
     ANSELH=0;
     PORTA=0;
     PORTB=0;
+    PORTD=0;
     PORTE=0;
 }
