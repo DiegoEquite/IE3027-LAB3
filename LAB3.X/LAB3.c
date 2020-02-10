@@ -33,29 +33,28 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include "LCD.h"
-<<<<<<< Updated upstream
 #include "ADC.h"
 #include "USART.h"
-=======
 #include "ADC.h" 
->>>>>>> Stashed changes
+
 
 void configIO(void);
 char lecturaUSART=0;
 uint8_t contador=0;
-char valor [8];
+uint8_t ADC1, ADC2;
+float Volt1=0.0,Volt2=0.0;
+char datos[20];
 void __interrupt() ISR(){
     if(RCIF==1){
         RCIF=0;
-        lecturaUSART=Read_USART();
-        PORTD=lecturaUSART;
+        lecturaUSART=Read_USART(); 
         if(lecturaUSART=='+'){contador++;}
         else if(lecturaUSART=='-'){contador--;}
     }
 }
+
 void main(void) {
     configIO();
     configADC();
@@ -63,30 +62,31 @@ void main(void) {
     LCD_Init();
     LCD_clear();
     while(1){
-        
-        sprintf(valor,"%d", contador); 
-        Write_USART_String("V1      V2      contador ");
+        ADC1=lecADC(0);
+        ADC2=lecADC(1);
+        Volt1=ADC1*0.0196;
+        Volt2=ADC2*0.0196;
+        Write_USART_String("V1   V2   contador ");
         Write_USART(13);
         Write_USART(10);
-        Write_USART_String(valor);
-        Write_USART(9);
-        Write_USART(lecturaUSART);
+        sprintf(datos, "%1.1f   %1.1f    %d", Volt1,Volt2, contador);
+        Write_USART_String(datos);
         Write_USART(13);
         Write_USART(10);
-        __delay_ms(1000);
+        LCD_clear();
+        print_LCD_String(datos);
+        __delay_ms(500);
     }
     return;
 }
 void configIO(){
     TRISB=0;
-    TRISE=0;
-    TRISD=0;
     TRISA=0;
+    TRISE=0;
     ANSEL=0;
     ANSELH=0;
     PORTA=0;
     PORTB=0;
-    PORTD=0;
     PORTE=0;
     INTCONbits.PEIE=1;
     PIE1bits.RCIE=1;

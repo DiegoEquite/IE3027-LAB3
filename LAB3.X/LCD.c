@@ -34,12 +34,13 @@ void PUERTO(uint8_t x){
 }
 void comandosLCD(uint8_t x){
     RS=0;
-    EN=1;
     PUERTO(x);
-    __delay_ms(5);
+    EN=1;
+    __delay_ms(4);
     EN=0;
 }
 void LCD_clear(void){
+    comandosLCD(0);
     comandosLCD(1);
 }
 void LCD_Init(){
@@ -80,9 +81,9 @@ void print_LCD_String(char *a){
 	for(i=0;a[i]!='\0';i++)
 	   print_LCD_Char(a[i]);
 }
-void Lcd_Shift_Right(){
-	comandosLCD(28);
-}
-void Lcd_Shift_Left(){
-	comandosLCD(24);
-}
+//void Lcd_Shift_Right(){
+//	comandosLCD(28);
+//}
+//void Lcd_Shift_Left(){
+//	comandosLCD(24);
+//}
