@@ -342,11 +342,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 138 ]
 }
 "30
-[; ;USART.c: 30: void Write_USART(uint8_t x){
+[; ;USART.c: 30: void Write_USART(uint8_t a){
 [v _Write_USART `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _Write_USART ]
-[v _x `uc ~T0 @X0 1 r1 ]
+[v _a `uc ~T0 @X0 1 r1 ]
 [f ]
 "31
 [; ;USART.c: 31:     while(!TRMT);
@@ -356,8 +356,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! _TRMT 143  ]
 [e :U 144 ]
 "32
-[; ;USART.c: 32:     TXREG=x;
-[e = _TXREG _x ]
+[; ;USART.c: 32:     TXREG=a;
+[e = _TXREG _a ]
 "33
 [; ;USART.c: 33: }
 [e :UE 141 ]

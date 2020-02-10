@@ -2638,7 +2638,7 @@ typedef uint16_t uintptr_t;
 
 
 char USART_Init(const long int baudrate);
-void Write_USART(uint8_t x);
+void Write_USART(uint8_t a);
 void Write_USART_String(char *a);
 char UART_Init(const long int baudrate);
 uint8_t Read_USART();
@@ -2668,9 +2668,9 @@ char USART_Init(const long int baudrate){
   }
   return 0;
 }
-void Write_USART(uint8_t x){
+void Write_USART(uint8_t a){
     while(!TRMT);
-    TXREG=x;
+    TXREG=a;
 }
 void Write_USART_String(char *a){
     uint8_t i;

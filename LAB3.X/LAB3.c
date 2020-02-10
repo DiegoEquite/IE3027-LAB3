@@ -40,9 +40,18 @@
 #include "USART.h"
 
 void configIO(void);
-uint8_t lecturaUSART;
+char lecturaUSART=0;
 uint8_t contador=0;
 char valor [8];
+void __interrupt() ISR(){
+    if(RCIF==1){
+        RCIF=0;
+        lecturaUSART=Read_USART();
+        PORTD=lecturaUSART;
+        if(lecturaUSART=='+'){contador++;}
+        else if(lecturaUSART=='-'){contador--;}
+    }
+}
 void main(void) {
     configIO();
     configADC();
@@ -50,14 +59,14 @@ void main(void) {
     LCD_Init();
     LCD_clear();
     while(1){
-        if(RCIF==1){lecturaUSART=Read_USART();}
-        if(lecturaUSART==43){contador++;}
-        else if(lecturaUSART==45){contador--;}
+        
         sprintf(valor,"%d", contador); 
         Write_USART_String("V1      V2      contador ");
         Write_USART(13);
         Write_USART(10);
-        Write_USART(valor);
+        Write_USART_String(valor);
+        Write_USART(9);
+        Write_USART(lecturaUSART);
         Write_USART(13);
         Write_USART(10);
         __delay_ms(1000);
@@ -75,4 +84,8 @@ void configIO(){
     PORTB=0;
     PORTD=0;
     PORTE=0;
+    INTCONbits.PEIE=1;
+    PIE1bits.RCIE=1;
+    PIR1bits.RCIF=0;
+    INTCONbits.GIE=1;
 }

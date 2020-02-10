@@ -27,9 +27,9 @@ char USART_Init(const long int baudrate){
   }
   return 0;                                       //Returns 0 to indicate UART initialization failed
 }
-void Write_USART(uint8_t x){
+void Write_USART(uint8_t a){
     while(!TRMT);
-    TXREG=x;
+    TXREG=a;
 }
 void Write_USART_String(char *a){
     uint8_t i;
