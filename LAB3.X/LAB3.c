@@ -36,8 +36,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "LCD.h"
+<<<<<<< Updated upstream
 #include "ADC.h"
 #include "USART.h"
+=======
+#include "ADC.h" 
+>>>>>>> Stashed changes
 
 void configIO(void);
 char lecturaUSART=0;

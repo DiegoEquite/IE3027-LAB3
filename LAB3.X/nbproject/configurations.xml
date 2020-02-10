@@ -157,7 +157,10 @@
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+<<<<<<< Updated upstream
         <property key="firmware.download.all" value="false"/>
+=======
+>>>>>>> Stashed changes
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

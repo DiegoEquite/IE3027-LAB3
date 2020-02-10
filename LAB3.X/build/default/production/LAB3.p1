@@ -11,8 +11,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 [p mainexit ]
+<<<<<<< Updated upstream
 "42 LAB3.c
 [; ;LAB3.c: 42: void configIO(void);
+=======
+"39 LAB3.c
+[; ;LAB3.c: 39: void configIO(void);
+>>>>>>> Stashed changes
 [v _configIO `(v ~T0 @X0 0 ef ]
 "16 ./ADC.h
 [; ;./ADC.h: 16: void configADC(void);
@@ -360,6 +365,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+<<<<<<< Updated upstream
 "43 LAB3.c
 [; ;LAB3.c: 43: char lecturaUSART=0;
 [v _lecturaUSART `uc ~T0 @X0 1 e ]
@@ -490,10 +496,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "76
 [; ;LAB3.c: 76: void configIO(){
+=======
+[v $root$_main `(v ~T0 @X0 0 e ]
+"41 LAB3.c
+[; ;LAB3.c: 41: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"42
+[; ;LAB3.c: 42:     configIO();
+[e ( _configIO ..  ]
+"43
+[; ;LAB3.c: 43:     configADC();
+[e ( _configADC ..  ]
+"44
+[; ;LAB3.c: 44:     LCD_Init();
+[e ( _LCD_Init ..  ]
+"45
+[; ;LAB3.c: 45:     LCD_clear();
+[e ( _LCD_clear ..  ]
+"46
+[; ;LAB3.c: 46:     while(1){
+[e :U 140 ]
+{
+"47
+[; ;LAB3.c: 47:         LCD_clear();
+[e ( _LCD_clear ..  ]
+"48
+[; ;LAB3.c: 48:         LCD_Set_Cursor(1,1);
+[e ( _LCD_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"49
+[; ;LAB3.c: 49:         print_LCD_String("hola");
+[e ( _print_LCD_String (1 :s 1C ]
+"50
+[; ;LAB3.c: 50:     }
+}
+[e :U 139 ]
+[e $U 140  ]
+[e :U 141 ]
+"51
+[; ;LAB3.c: 51:     return;
+[e $UE 138  ]
+"52
+[; ;LAB3.c: 52: }
+[e :UE 138 ]
+}
+"53
+[; ;LAB3.c: 53: void configIO(){
+>>>>>>> Stashed changes
 [v _configIO `(v ~T0 @X0 1 ef ]
 {
 [e :U _configIO ]
 [f ]
+<<<<<<< Updated upstream
 "77
 [; ;LAB3.c: 77:     TRISB=0;
 [e = _TRISB -> -> 0 `i `uc ]
@@ -539,6 +595,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 "91
 [; ;LAB3.c: 91: }
 [e :UE 152 ]
+=======
+"54
+[; ;LAB3.c: 54:     TRISB=0;
+[e = _TRISB -> -> 0 `i `uc ]
+"55
+[; ;LAB3.c: 55:     TRISE=0;
+[e = _TRISE -> -> 0 `i `uc ]
+"56
+[; ;LAB3.c: 56:     TRISA=0;
+[e = _TRISA -> -> 0 `i `uc ]
+"57
+[; ;LAB3.c: 57:     ANSEL=0;
+[e = _ANSEL -> -> 0 `i `uc ]
+"58
+[; ;LAB3.c: 58:     ANSELH=0;
+[e = _ANSELH -> -> 0 `i `uc ]
+"59
+[; ;LAB3.c: 59:     PORTA=0;
+[e = _PORTA -> -> 0 `i `uc ]
+"60
+[; ;LAB3.c: 60:     PORTB=0;
+[e = _PORTB -> -> 0 `i `uc ]
+"61
+[; ;LAB3.c: 61:     PORTE=0;
+[e = _PORTE -> -> 0 `i `uc ]
+"62
+[; ;LAB3.c: 62: }
+[e :UE 142 ]
+>>>>>>> Stashed changes
 }
 [p f _sprintf 8388736 ]
 [a 1C 37 100 0 ]

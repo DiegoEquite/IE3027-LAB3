@@ -21,11 +21,17 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+<<<<<<< Updated upstream
 "46 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LAB3.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 "55
 [v _main main `(v  1 e 1 0 ]
 "76
+=======
+"41 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LAB3.c
+[v _main main `(v  1 e 1 0 ]
+"53
+>>>>>>> Stashed changes
 [v _configIO configIO `(v  1 e 1 0 ]
 "10 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LCD.c
 [v _print_LCD_Char print_LCD_Char `(v  1 e 1 0 ]
@@ -217,6 +223,7 @@
 [v _RE0 RE0 `VEb  1 e 0 @72 ]
 "4208
 [v _RE1 RE1 `VEb  1 e 0 @73 ]
+<<<<<<< Updated upstream
 "4259
 [v _SPEN SPEN `VEb  1 e 0 @199 ]
 "4313
@@ -241,6 +248,12 @@
 [v _main main `(v  1 e 1 0 ]
 {
 "75
+=======
+"41 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LAB3.c
+[v _main main `(v  1 e 1 0 ]
+{
+"52
+>>>>>>> Stashed changes
 } 0
 "505 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -285,10 +298,17 @@
 [v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
 "30
 } 0
+<<<<<<< Updated upstream
 "76 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LAB3.c
 [v _configIO configIO `(v  1 e 1 0 ]
 {
 "91
+=======
+"53 C:\Users\rodri\OneDrive\Documents\GitHub\IE3027-LAB3\LAB3.X\LAB3.c
+[v _configIO configIO `(v  1 e 1 0 ]
+{
+"62
+>>>>>>> Stashed changes
 } 0
 "8 C:\Users\rodri\OneDrive\Documents\GitHub/IE3027-LAB2/LAB2.X/ADC.c
 [v _configADC configADC `(v  1 e 1 0 ]

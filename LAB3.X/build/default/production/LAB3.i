@@ -2857,6 +2857,7 @@ uint8_t lecADC(uint8_t x);
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 35 "./USART.h" 2
 
+<<<<<<< Updated upstream
 
 char USART_Init(const long int baudrate);
 void Write_USART(uint8_t a);
@@ -2866,6 +2867,9 @@ uint8_t Read_USART();
 void Read_USART_String(char *Output, unsigned int length);
 # 40 "LAB3.c" 2
 
+=======
+void configIO(void);
+>>>>>>> Stashed changes
 
 void configIO(void);
 char lecturaUSART=0;
