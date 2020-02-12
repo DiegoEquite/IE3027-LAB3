@@ -2650,8 +2650,7 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 # 35 "LAB3.c" 2
 
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 1 3
-
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
 
 
 
@@ -2660,91 +2659,16 @@ typedef uint16_t uintptr_t;
 
 
 typedef unsigned size_t;
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 2 3
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\__null.h" 1 3
-# 6 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 2 3
-
-typedef unsigned short wchar_t;
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 2 3
 
 
 
 
 
 
-
-typedef struct {
- int rem;
- int quot;
-} div_t;
-typedef struct {
- unsigned rem;
- unsigned quot;
-} udiv_t;
-typedef struct {
- long quot;
- long rem;
-} ldiv_t;
-typedef struct {
- unsigned long quot;
- unsigned long rem;
-} uldiv_t;
-# 65 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 3
-extern double atof(const char *);
-extern double strtod(const char *, const char **);
-extern int atoi(const char *);
-extern unsigned xtoi(const char *);
-extern long atol(const char *);
-
-
-
-extern long strtol(const char *, char **, int);
-
-extern int rand(void);
-extern void srand(unsigned int);
-extern void * calloc(size_t, size_t);
-extern div_t div(int numer, int denom);
-extern udiv_t udiv(unsigned numer, unsigned denom);
-extern ldiv_t ldiv(long numer, long denom);
-extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-
-
-
-extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-extern unsigned int _rotl(unsigned int value, unsigned int shift);
-extern unsigned int _rotr(unsigned int value, unsigned int shift);
-
-
-
-
-extern void * malloc(size_t);
-extern void free(void *);
-extern void * realloc(void *, size_t);
-# 104 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdlib.h" 3
-extern int atexit(void (*)(void));
-extern char * getenv(const char *);
-extern char ** environ;
-extern int system(char *);
-extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-extern int abs(int);
-extern long labs(long);
-
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
-# 36 "LAB3.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 1 3
-# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdio.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdarg.h" 1 3
 
 
@@ -2823,7 +2747,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 37 "LAB3.c" 2
+# 36 "LAB3.c" 2
 
 # 1 "./LCD.h" 1
 # 39 "./LCD.h"
@@ -2837,11 +2761,8 @@ void comandosLCD(uint8_t x);
 void PUERTO(uint8_t x);
 void LCD_clear(void);
 void LCD_Set_Cursor(uint8_t x,uint8_t y);
-
 void print_LCD_String(char *a);
-void Lcd_Shift_Right();
-void Lcd_Shift_Left();
-# 38 "LAB3.c" 2
+# 37 "LAB3.c" 2
 
 # 1 "./ADC.h" 1
 # 15 "./ADC.h"
@@ -2850,40 +2771,42 @@ void Lcd_Shift_Left();
 
 void configADC(void);
 uint8_t lecADC(uint8_t x);
-# 39 "LAB3.c" 2
+# 38 "LAB3.c" 2
 
 # 1 "./USART.h" 1
 # 35 "./USART.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 35 "./USART.h" 2
 
-<<<<<<< Updated upstream
 
 char USART_Init(const long int baudrate);
 void Write_USART(uint8_t a);
 void Write_USART_String(char *a);
 char UART_Init(const long int baudrate);
-uint8_t Read_USART();
+uint8_t Read_USART(void);
 void Read_USART_String(char *Output, unsigned int length);
-# 40 "LAB3.c" 2
+# 39 "LAB3.c" 2
 
-=======
-void configIO(void);
->>>>>>> Stashed changes
+
 
 void configIO(void);
+void enviar(float a);
+float conversion(uint8_t b);
 char lecturaUSART=0;
 uint8_t contador=0;
-char valor [8];
+uint8_t ADC1, ADC2;
+float Volt1=0.0,Volt2=0.0;
+char datos[20];
+
 void __attribute__((picinterrupt(("")))) ISR(){
     if(RCIF==1){
         RCIF=0;
         lecturaUSART=Read_USART();
-        PORTD=lecturaUSART;
         if(lecturaUSART=='+'){contador++;}
         else if(lecturaUSART=='-'){contador--;}
     }
 }
+
 void main(void) {
     configIO();
     configADC();
@@ -2891,33 +2814,39 @@ void main(void) {
     LCD_Init();
     LCD_clear();
     while(1){
-
-        sprintf(valor,"%d", contador);
-        Write_USART_String("V1      V2      contador ");
+        ADC1=lecADC(0);
+        ADC2=lecADC(1);
+        Volt1=conversion(ADC1);
+        Volt2=conversion(ADC2);
+        Write_USART_String("V1   V2   contador \n");
+        sprintf(datos, "%2.1f   %2.1f   %d", Volt1,Volt2,contador);
+        Write_USART_String(datos);
         Write_USART(13);
         Write_USART(10);
-        Write_USART_String(valor);
-        Write_USART(9);
-        Write_USART(lecturaUSART);
-        Write_USART(13);
-        Write_USART(10);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        LCD_clear();
+        LCD_Set_Cursor(1,1);
+        print_LCD_String("V1   V2   conta");
+        LCD_Set_Cursor(2,0);
+        print_LCD_String(datos);
+        _delay((unsigned long)((500)*(4000000/4000.0)));
     }
     return;
 }
 void configIO(){
     TRISB=0;
-    TRISE=0;
-    TRISD=0;
     TRISA=0;
+    TRISE=0;
     ANSEL=0;
     ANSELH=0;
-    PORTA=0;
     PORTB=0;
-    PORTD=0;
     PORTE=0;
     INTCONbits.PEIE=1;
     PIE1bits.RCIE=1;
     PIR1bits.RCIF=0;
     INTCONbits.GIE=1;
+}
+
+
+float conversion(uint8_t b){
+    return b*0.0196;
 }

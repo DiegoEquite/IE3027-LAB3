@@ -1,6 +1,5 @@
 //* Liberia basada en la libreira LCD4bits de Pablo Mazariegos
 
-
 #include <xc.h>
 #include <stdint.h>
 #include "LCD.h"
@@ -8,18 +7,13 @@
 
 
 void print_LCD_Char(char caracter){
-    char temp,y;
-    temp = caracter&0x0F;
-    y = caracter&0xF0;
     RS = 1;             // => RS = 1
-    PUERTO(y>>4);             //Data transfer
+    PUERTO(caracter);
     EN = 1;
-    __delay_us(40);
+    __delay_us(5);
     EN = 0;
-    PUERTO(temp);
-    EN = 1;
-    __delay_us(40);
-    EN = 0;
+    __delay_us(5);
+    __delay_us(50);
 }
 void PUERTO(uint8_t x){
     if(x & 1){D0=1;}else{D0=0;}
@@ -34,33 +28,32 @@ void PUERTO(uint8_t x){
 }
 void comandosLCD(uint8_t x){
     RS=0;
-    EN=1;
     PUERTO(x);
-    __delay_ms(5);
+    EN=1;
+    __delay_us(5);
     EN=0;
+    __delay_us(5);
+    __delay_ms(2);
 }
 void LCD_clear(void){
     comandosLCD(1);
 }
 void LCD_Init(){
-  PUERTO(0x00);
-   __delay_ms(20);
-  PUERTO(48);
-	__delay_ms(5);
-  PUERTO(48);
-	__delay_ms(11);
-  PUERTO(48);
-  /////////////////////////////////////////////////////
-  PUERTO(56);
-  PUERTO(8);
-  PUERTO(1);
-  PUERTO(6);
+    RS=0;
+    EN=0;
+    PUERTO(0x00);
+   __delay_ms(50);
+   comandosLCD(0x02);
+   comandosLCD(0x38);
+   comandosLCD(0x0C);
+   comandosLCD(0x06);
+   
 }
 void LCD_Set_Cursor(uint8_t x,uint8_t y){
 	uint8_t a;
 	if(x == 1)
 	{
-        a = 0x80 + y - 1;
+        a = 0x80 + y;
 		//z = temp>>4;
 		//y = temp & 0x0F;
 		//Lcd_Cmd(z);
@@ -68,7 +61,7 @@ void LCD_Set_Cursor(uint8_t x,uint8_t y){
 	}
 	else if(x == 2)
 	{
-		a = 0xC0 + y - 1;
+		a = 0xC0 + y;
 		//z = temp>>4;
 		//y = temp & 0x0F;
 		comandosLCD(a);
@@ -80,9 +73,7 @@ void print_LCD_String(char *a){
 	for(i=0;a[i]!='\0';i++)
 	   print_LCD_Char(a[i]);
 }
-void Lcd_Shift_Right(){
-	comandosLCD(28);
-}
-void Lcd_Shift_Left(){
-	comandosLCD(24);
-}
+//void Lcd_Shift_Right(){
+//	comandosLCD(28);}
+//void Lcd_Shift_Left(){
+//	comandosLCD(24);}

@@ -44,8 +44,7 @@ void comandosLCD(uint8_t x);
 void PUERTO(uint8_t x);
 void LCD_clear(void);
 void LCD_Set_Cursor(uint8_t x,uint8_t y);
-//void print_LCD_String(char *x);
 void print_LCD_String(char *a);
-void Lcd_Shift_Right();
-void Lcd_Shift_Left();
+//void Lcd_Shift_Right();
+//void Lcd_Shift_Left();
 #endif	/* XC_HEADER_TEMPLATE_H */

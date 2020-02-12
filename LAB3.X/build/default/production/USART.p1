@@ -415,33 +415,3 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;USART.c: 43: }
 [e :UE 150 ]
 }
-"44
-[; ;USART.c: 44: void Read_USART_String(char *Output, unsigned int length){
-[v _Read_USART_String `(v ~T0 @X0 1 ef2`*uc`ui ]
-{
-[e :U _Read_USART_String ]
-[v _Output `*uc ~T0 @X0 1 r1 ]
-[v _length `ui ~T0 @X0 1 r2 ]
-[f ]
-"45
-[; ;USART.c: 45:   unsigned int i;
-[v _i `ui ~T0 @X0 1 a ]
-"46
-[; ;USART.c: 46:   for(int i=0;i<length;i++)
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 158  ]
-[e :U 155 ]
-"47
-[; ;USART.c: 47:   Output[i] = Read_USART();
-[e = *U + _Output * -> _i `x -> -> # *U _Output `i `x -> ( _Read_USART ..  `uc ]
-[e ++ _i -> 1 `i ]
-[e :U 158 ]
-[e $ < -> _i `ui _length 155  ]
-[e :U 156 ]
-}
-"48
-[; ;USART.c: 48: }
-[e :UE 154 ]
-}

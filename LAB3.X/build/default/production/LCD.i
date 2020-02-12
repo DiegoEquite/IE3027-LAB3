@@ -9,7 +9,6 @@
 # 1 "LCD.c" 2
 
 
-
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2494,7 +2493,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 4 "LCD.c" 2
+# 3 "LCD.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
@@ -2629,7 +2628,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 5 "LCD.c" 2
+# 4 "LCD.c" 2
 
 # 1 "./LCD.h" 1
 # 39 "./LCD.h"
@@ -2643,28 +2642,20 @@ void comandosLCD(uint8_t x);
 void PUERTO(uint8_t x);
 void LCD_clear(void);
 void LCD_Set_Cursor(uint8_t x,uint8_t y);
-
 void print_LCD_String(char *a);
-void Lcd_Shift_Right();
-void Lcd_Shift_Left();
-# 6 "LCD.c" 2
+# 5 "LCD.c" 2
 
 
 
 
 void print_LCD_Char(char caracter){
-    char temp,y;
-    temp = caracter&0x0F;
-    y = caracter&0xF0;
     RE0 = 1;
-    PUERTO(y>>4);
+    PUERTO(caracter);
     RE1 = 1;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
+    _delay((unsigned long)((5)*(4000000/4000000.0)));
     RE1 = 0;
-    PUERTO(temp);
-    RE1 = 1;
-    _delay((unsigned long)((40)*(4000000/4000000.0)));
-    RE1 = 0;
+    _delay((unsigned long)((5)*(4000000/4000000.0)));
+    _delay((unsigned long)((50)*(4000000/4000000.0)));
 }
 void PUERTO(uint8_t x){
     if(x & 1){RB0=1;}else{RB0=0;}
@@ -2679,33 +2670,32 @@ void PUERTO(uint8_t x){
 }
 void comandosLCD(uint8_t x){
     RE0=0;
-    RE1=1;
     PUERTO(x);
-    _delay((unsigned long)((5)*(4000000/4000.0)));
+    RE1=1;
+    _delay((unsigned long)((5)*(4000000/4000000.0)));
     RE1=0;
+    _delay((unsigned long)((5)*(4000000/4000000.0)));
+    _delay((unsigned long)((2)*(4000000/4000.0)));
 }
 void LCD_clear(void){
     comandosLCD(1);
 }
 void LCD_Init(){
-  PUERTO(0x00);
-   _delay((unsigned long)((20)*(4000000/4000.0)));
-  PUERTO(48);
- _delay((unsigned long)((5)*(4000000/4000.0)));
-  PUERTO(48);
- _delay((unsigned long)((11)*(4000000/4000.0)));
-  PUERTO(48);
+    RE0=0;
+    RE1=0;
+    PUERTO(0x00);
+   _delay((unsigned long)((50)*(4000000/4000.0)));
+   comandosLCD(0x02);
+   comandosLCD(0x38);
+   comandosLCD(0x0C);
+   comandosLCD(0x06);
 
-  PUERTO(56);
-  PUERTO(8);
-  PUERTO(1);
-  PUERTO(6);
 }
 void LCD_Set_Cursor(uint8_t x,uint8_t y){
  uint8_t a;
  if(x == 1)
  {
-        a = 0x80 + y - 1;
+        a = 0x80 + y;
 
 
 
@@ -2713,7 +2703,7 @@ void LCD_Set_Cursor(uint8_t x,uint8_t y){
  }
  else if(x == 2)
  {
-  a = 0xC0 + y - 1;
+  a = 0xC0 + y;
 
 
   comandosLCD(a);
@@ -2724,10 +2714,4 @@ void print_LCD_String(char *a){
  int i;
  for(i=0;a[i]!='\0';i++)
     print_LCD_Char(a[i]);
-}
-void Lcd_Shift_Right(){
- comandosLCD(28);
-}
-void Lcd_Shift_Left(){
- comandosLCD(24);
 }

@@ -2641,7 +2641,7 @@ char USART_Init(const long int baudrate);
 void Write_USART(uint8_t a);
 void Write_USART_String(char *a);
 char UART_Init(const long int baudrate);
-uint8_t Read_USART();
+uint8_t Read_USART(void);
 void Read_USART_String(char *Output, unsigned int length);
 # 6 "USART.c" 2
 
@@ -2681,9 +2681,4 @@ void Write_USART_String(char *a){
 uint8_t Read_USART(){
   while(!RCIF);
   return RCREG;
-}
-void Read_USART_String(char *Output, unsigned int length){
-  unsigned int i;
-  for(int i=0;i<length;i++)
-  Output[i] = Read_USART();
 }

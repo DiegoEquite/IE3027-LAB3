@@ -41,8 +41,8 @@ uint8_t Read_USART(){
   while(!RCIF);
   return RCREG;
 } 
-void Read_USART_String(char *Output, unsigned int length){
-  unsigned int i;
-  for(int i=0;i<length;i++)
-  Output[i] = Read_USART();
-}
+//void Read_USART_String(char *Output, unsigned int length){
+//  unsigned int i;
+//  for(int i=0;i<length;i++)
+//  Output[i] = Read_USART();
+//}
