@@ -36,6 +36,7 @@ void comandosLCD(uint8_t x){
     __delay_ms(2);
 }
 void LCD_clear(void){
+    comandosLCD(0);
     comandosLCD(1);
 }
 void LCD_Init(){
@@ -77,3 +78,8 @@ void print_LCD_String(char *a){
 //	comandosLCD(28);}
 //void Lcd_Shift_Left(){
 //	comandosLCD(24);}
+//	comandosLCD(28);
+//}
+//void Lcd_Shift_Left(){
+//	comandosLCD(24);
+//}

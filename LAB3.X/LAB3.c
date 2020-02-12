@@ -47,7 +47,6 @@ uint8_t contador=0;
 uint8_t ADC1, ADC2;
 float Volt1=0.0,Volt2=0.0;
 char datos[20];
-
 void __interrupt() ISR(){
     if(RCIF==1){
         RCIF=0;
@@ -70,6 +69,9 @@ void main(void) {
         Volt2=conversion(ADC2);
         Write_USART_String("V1   V2   contador \n");
         sprintf(datos, "%2.1f   %2.1f   %d", Volt1,Volt2,contador);
+        Write_USART_String("V1   V2   contador ");
+        Write_USART(13);
+        Write_USART(10);
         Write_USART_String(datos);
         Write_USART(13);
         Write_USART(10);
@@ -94,6 +96,7 @@ void configIO(){
     PIE1bits.RCIE=1;
     PIR1bits.RCIF=0;
     INTCONbits.GIE=1;
+
 }
 
 
