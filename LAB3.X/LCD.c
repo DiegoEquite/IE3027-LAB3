@@ -5,7 +5,7 @@
 #include "LCD.h"
 #define _XTAL_FREQ 4000000
 
-
+//funcion para imprimir un caracter
 void print_LCD_Char(char caracter){
     RS = 1;             // => RS = 1
     PUERTO(caracter);
@@ -15,6 +15,7 @@ void print_LCD_Char(char caracter){
     __delay_us(5);
     __delay_us(50);
 }
+
 void PUERTO(uint8_t x){
     if(x & 1){D0=1;}else{D0=0;}
     if(x & 2){D1=1;}else{D1=0;}
@@ -26,6 +27,7 @@ void PUERTO(uint8_t x){
     if(x & 128){D7=1;}else{D7=0;}
 
 }
+//funcion para enviar datos a la LCD
 void comandosLCD(uint8_t x){
     RS=0;
     PUERTO(x);
@@ -35,10 +37,12 @@ void comandosLCD(uint8_t x){
     __delay_us(5);
     __delay_ms(2);
 }
+//limpiar LCD
 void LCD_clear(void){
     comandosLCD(0);
     comandosLCD(1);
 }
+//funcion para iniciar la LCD
 void LCD_Init(){
     RS=0;
     EN=0;
@@ -50,25 +54,21 @@ void LCD_Init(){
    comandosLCD(0x06);
    
 }
+//Funcion para configurar el cursor
 void LCD_Set_Cursor(uint8_t x,uint8_t y){
 	uint8_t a;
 	if(x == 1)
 	{
         a = 0x80 + y;
-		//z = temp>>4;
-		//y = temp & 0x0F;
-		//Lcd_Cmd(z);
 		comandosLCD(a);
 	}
 	else if(x == 2)
 	{
 		a = 0xC0 + y;
-		//z = temp>>4;
-		//y = temp & 0x0F;
 		comandosLCD(a);
-		//Lcd_Cmd(y);
 	}
 }
+//funcion para enviar un string
 void print_LCD_String(char *a){
 	int i;
 	for(i=0;a[i]!='\0';i++)

@@ -30,7 +30,7 @@
 #define D6 RB6
 #define D7 RB7*/
 #define _XTAL_FREQ 4000000 
-
+//incluir librerias
 #include <xc.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -38,53 +38,56 @@
 #include "ADC.h"
 #include "USART.h"
 
-
+//funciones 
 void configIO(void);
-void enviar(float a);
 float conversion(uint8_t b);
+//variables
 char lecturaUSART=0;
 uint8_t contador=0;
 uint8_t ADC1, ADC2;
 float Volt1=0.0,Volt2=0.0;
 char datos[20];
+//interrupcion del RCIF para la recepcion de datos en USART
 void __interrupt() ISR(){
     if(RCIF==1){
         RCIF=0;
-        lecturaUSART=Read_USART(); 
-        if(lecturaUSART=='+'){contador++;}
+        lecturaUSART=Read_USART();  //guardar el valor recibido
+        //comparar el valor con + o -, si es + aumenta el contador, si es - decrementa el contador
+        if(lecturaUSART=='+'){contador++;} 
         else if(lecturaUSART=='-'){contador--;}
     }
 }
 
 void main(void) {
-    configIO();
-    configADC();
-    USART_Init(9600);
-    LCD_Init();
-    LCD_clear();
+    configIO();//llamar a la funcion de configurar puertos 
+    configADC();//llamar a la funcion de condigurar ADC
+    USART_Init(9600);//llamar a la funcion de configurar USAR
+    LCD_Init();//iniciar la LCD
+    LCD_clear();//funcion para limpiar la LCD
     while(1){
+        //leer los pines del ADC, y guardar su valor en una variable
         ADC1=lecADC(0);
         ADC2=lecADC(1);
+        //convertir los valores en binario a voltajes
         Volt1=conversion(ADC1);
         Volt2=conversion(ADC2);
+        //enviar los datos por USART hacia la pc
         Write_USART_String("V1   V2   contador \n");
-        sprintf(datos, "%2.1f   %2.1f   %d", Volt1,Volt2,contador);
-        Write_USART_String("V1   V2   contador ");
+        sprintf(datos, "%2.1f   %2.1f   %d", Volt1,Volt2,contador);//convertir los valores de voltaje y el contador a un string
+        Write_USART_String(datos);//enviar el string con los valores a la pc
         Write_USART(13);
         Write_USART(10);
-        Write_USART_String(datos);
-        Write_USART(13);
-        Write_USART(10);
-        LCD_clear();
-        LCD_Set_Cursor(1,1);
-        print_LCD_String("V1   V2   conta");
-        LCD_Set_Cursor(2,0);
-        print_LCD_String(datos);
+        LCD_clear();//limpiar la LCD
+        LCD_Set_Cursor(1,1);//colocar el cursor en fila=1,columna=1
+        print_LCD_String("V1   V2   conta");//enviar un string para mostrar que voltaje es y el contador
+        LCD_Set_Cursor(2,0);//colocar el cursor en fila=2, columna =0
+        print_LCD_String(datos);//enviar los datos a la LCD
         __delay_ms(500);
     }
     return;
 }
 void configIO(){
+    //configuracion de puertos, todos en salidas y digitales
     TRISB=0;
     TRISA=0;
     TRISE=0;
@@ -92,6 +95,7 @@ void configIO(){
     ANSELH=0;
     PORTB=0;
     PORTE=0;
+    //configuracion de interrupciones, se habilito la interrupcion RCIF
     INTCONbits.PEIE=1;
     PIE1bits.RCIE=1;
     PIR1bits.RCIF=0;
@@ -99,7 +103,7 @@ void configIO(){
 
 }
 
-
+//funcion para convertir los valores  binarios a voltajes.
 float conversion(uint8_t b){
     return b*0.0196;
 }
